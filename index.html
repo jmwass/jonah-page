@@ -148,19 +148,17 @@
     <script>
         function moveButton() {
             const btn = document.getElementById('noBtn');
-            const container = document.querySelector('.container');
-            const containerRect = container.getBoundingClientRect();
-            const btnRect = btn.getBoundingClientRect();
             
-            // Calculate random position within container
-            const maxX = containerRect.width - btnRect.width - 40;
-            const maxY = containerRect.height - btnRect.height - 40;
+            // Calculate random position anywhere on the page
+            const maxX = window.innerWidth - btn.offsetWidth - 20;
+            const maxY = window.innerHeight - btn.offsetHeight - 20;
             
-            const randomX = Math.random() * maxX - maxX / 2;
-            const randomY = Math.random() * maxY - maxY / 2;
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
             
-            btn.style.position = 'absolute';
-            btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            btn.style.position = 'fixed';
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
             
             // Make Yes button bigger each time
             const yesBtn = document.querySelector('.yes-btn');
